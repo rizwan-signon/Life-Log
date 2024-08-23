@@ -40,7 +40,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="bg-blue-600 w-1/3 p-4 flex flex-col gap-6"
+      className="bg-gray-900 shadow-2xl rounded-lg w-1/3 p-4 flex flex-col gap-6"
     >
       <h1 className="text-center text-2xl font-bold capitalize  ">
         lets create your memory
