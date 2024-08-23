@@ -1,18 +1,24 @@
 import Post from "./Post";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { userDetails } from "../redux/slices/userSlice";
+import { useSelector } from "react-redux";
 const Posts = () => {
-  const [posts, setPosts] = useState([]);
+  const { user } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  // const [posts, setPosts] = useState([]);
   const fetchPosts = async () => {
     const response = await fetch("http://localhost:3000/posts");
     const data = await response.json();
-    setPosts(data);
+    // setPosts(data);
+    dispatch(userDetails(data));
   };
   useEffect(() => {
     fetchPosts();
   }, []);
   return (
     <div className="w-2/3 grid grid-cols-2 gap-4 p-2">
-      {!posts.length ? (
+      {!user.length ? (
         <div className=" flex w-full col-span-2 p-4 flex-col gap-4 h-96">
           <div className="skeleton h-56 w-full"></div>
           <div className="skeleton h-8 w-28"></div>
@@ -20,7 +26,8 @@ const Posts = () => {
           <div className="skeleton h-4 w-full"></div>
         </div>
       ) : (
-        posts.map((post, index) => <Post key={index} post={post} />)
+        <Post />
+        // posts.map((post, index) => <Post key={index} post={post} />)
       )}
     </div>
   );

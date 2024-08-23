@@ -1,6 +1,9 @@
 import { useState } from "react";
 import FileBase from "react-file-base64";
+import { useDispatch } from "react-redux";
+import { userDetails } from "../redux/slices/userSlice";
 const Form = () => {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     creator: "",
     title: "",
@@ -31,7 +34,7 @@ const Form = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-      console.log(data);
+      dispatch(userDetails(data));
     } catch (error) {
       console.log(error.message);
     }
