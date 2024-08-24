@@ -9,8 +9,19 @@ const Post = () => {
   const handleClick = (userId) => {
     dispatch(storeId(userId));
   };
+  const handleDelete = async (userId) => {
+    try {
+      const res = await fetch(`http://localhost:3000/posts/${userId}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return user.map((user, index) => (
-    <div key={index} className="card glass relative w-full ">
+    <div key={index} className="card glass relative w-full hover:opacity-85">
       <figure className="w-full">
         <img
           src={user.selectedFile}
@@ -42,7 +53,12 @@ const Post = () => {
         <h1 className=" truncate">{user.message}</h1>
         <div className="flex items-center justify-between mt-4">
           <span>likes</span>
-          <button className="btn btn-primary w-2/5">Delete</button>
+          <button
+            onClick={() => handleDelete(user._id)}
+            className="btn btn-primary w-2/5"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

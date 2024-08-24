@@ -26,9 +26,13 @@ export const updatePost = async (req, res, next) => {
     const postBody = req.body;
     // if (!mongoose.Types.ObjectId.isValid(_id))
     //   throw new Error("the id provided is not correct format");
-    const updatedPost = await Post.findByIdAndUpdate(postId, postBody, {
-      new: true,
-    });
+    const updatedPost = await Post.findByIdAndUpdate(
+      postId,
+      { ...postBody, postId },
+      {
+        new: true,
+      }
+    );
     if (!updatePost) {
       return res.status(404).send("User not found");
     }

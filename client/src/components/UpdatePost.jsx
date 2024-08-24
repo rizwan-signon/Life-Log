@@ -60,7 +60,7 @@ const UpdatePost = () => {
           value={userInfo.title}
           onChange={handleChange}
           type="text"
-          placeholder="title"
+          placeholder="memory title"
           id="title"
           className=" p-3 outline-none bg-gray-300 rounded-md"
         />
@@ -77,7 +77,7 @@ const UpdatePost = () => {
           value={userInfo.tags}
           onChange={handleChange}
           type="text"
-          placeholder="tags"
+          placeholder="tags separated by ,"
           id="tags"
           className=" p-3 outline-none bg-gray-300 rounded-md"
         />

@@ -59,7 +59,7 @@ const Form = () => {
         <input
           onChange={handleChange}
           type="text"
-          placeholder="title"
+          placeholder=" memory title"
           id="title"
           className=" p-3 outline-none bg-gray-300 rounded-md"
         />
@@ -67,14 +67,14 @@ const Form = () => {
         <input
           onChange={handleChange}
           type="text"
-          placeholder="message"
+          placeholder=" memory message"
           id="message"
           className=" p-3 outline-none bg-gray-300 rounded-md"
         />
         <input
           onChange={handleChange}
           type="text"
-          placeholder="tags"
+          placeholder="tags separated by comma"
           id="tags"
           className=" p-3 outline-none bg-gray-300 rounded-md"
         />
