@@ -22,14 +22,27 @@ export const createPost = async (req, res, next) => {
 
 export const updatePost = async (req, res, next) => {
   try {
-    const { id: _id } = req.params.id;
+    const postId = req.params.id;
     const postBody = req.body;
-    if (!mongoose.Types.ObjectId.isValid(_id))
-      throw new Error("the id provided is not correct format");
-    const updatedPost = await Post.findByIdAndUpdate(_id, postBody, {
+    // if (!mongoose.Types.ObjectId.isValid(_id))
+    //   throw new Error("the id provided is not correct format");
+    const updatedPost = await Post.findByIdAndUpdate(postId, postBody, {
       new: true,
     });
+    if (!updatePost) {
+      return res.status(404).send("User not found");
+    }
     res.status(200).json(updatedPost);
+  } catch (error) {
+    next(error.message);
+  }
+};
+
+export const deletePost = async (req, res, next) => {
+  const postId = req.params.id;
+  try {
+    const deletedPost = await Post.findOneAndDelete(postId);
+    res.status(200).json({ message: "post deleted successfully" });
   } catch (error) {
     next(error.message);
   }
