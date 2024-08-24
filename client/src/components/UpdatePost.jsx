@@ -25,7 +25,7 @@ const UpdatePost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:3000/posts/${userId}`, {
+      const res = await fetch(`http://localhost:3000/posts/${userInfo._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
