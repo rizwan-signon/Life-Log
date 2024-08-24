@@ -17,7 +17,7 @@ const Posts = () => {
     fetchPosts();
   }, []);
   return (
-    <div className="w-2/3 grid grid-cols-2 gap-4 p-2">
+    <div className="sm:w-2/3 w-full grid sm:grid-cols-2 grid-cols-1 gap-4 p-2">
       {!user.length ? (
         <div className=" flex w-full col-span-2 p-4 flex-col gap-4 h-96">
           <div className="skeleton h-56 w-full"></div>

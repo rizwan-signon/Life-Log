@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className=" font-sans max-w-7xl mx-auto p-4 text-white">
       <Header />
-      <div className=" flex items-start gap-4 mt-10">
+      <div className=" flex sm:flex-row sm:items-start gap-4 mt-10 flex-col-reverse sm:max-w-7xl max-w-lg">
         <Posts />
         {userInfo ? <UpdatePost /> : <Form />}
       </div>

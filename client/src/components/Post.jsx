@@ -3,7 +3,9 @@ import moment from "moment/moment";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { storeId } from "../redux/slices/userSlice";
+import { useState } from "react";
 const Post = () => {
+  const [likes, setLikes] = useState(0);
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
   const handleClick = (userId) => {
@@ -20,8 +22,20 @@ const Post = () => {
       console.log(error);
     }
   };
+  //likecount
+  const handleLikeCount = async (userId) => {
+    try {
+      const res = await fetch(`http://localhost:3000/posts/likes/${userId}`, {
+        method: "PATCH",
+      });
+      const data = await res.json();
+      setLikes(data.likeCount);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return user.map((user, index) => (
-    <div key={index} className="card glass relative w-full hover:opacity-85">
+    <div key={index} className="card glass relative sm:w-full hover:opacity-85">
       <figure className="w-full">
         <img
           src={user.selectedFile}
@@ -52,7 +66,12 @@ const Post = () => {
       <div className="px-8 py-4">
         <h1 className=" truncate">{user.message}</h1>
         <div className="flex items-center justify-between mt-4">
-          <span>likes</span>
+          <span
+            onClick={() => handleLikeCount(user._id)}
+            className=" cursor-pointer"
+          >
+            likes &nbsp;&nbsp;&nbsp;{likes}
+          </span>
           <button
             onClick={() => handleDelete(user._id)}
             className="btn btn-primary w-2/5"
