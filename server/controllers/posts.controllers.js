@@ -41,7 +41,26 @@ export const updatePost = async (req, res, next) => {
     next(error.message);
   }
 };
-
+//add likepost functionality
+export const likePost = async (req, res, next) => {
+  try {
+    const postId = req.params.id;
+    const post = await Post.findById(postId);
+    const updateLikes = await Post.findByIdAndUpdate(
+      postId,
+      { likeCount: post.likeCount + 1 },
+      {
+        new: true,
+      }
+    );
+    if (!updateLikes) {
+      return res.status(404).send("User not found");
+    }
+    res.status(200).json(updateLikes);
+  } catch (error) {
+    next(error.message);
+  }
+};
 export const deletePost = async (req, res, next) => {
   const postId = req.params.id;
   try {
