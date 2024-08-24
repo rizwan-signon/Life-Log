@@ -1,8 +1,14 @@
 import { BsThreeDotsVertical } from "react-icons/bs";
 import moment from "moment/moment";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { storeId } from "../redux/slices/userSlice";
 const Post = () => {
+  const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const handleClick = (userId) => {
+    dispatch(storeId(userId));
+  };
   return user.map((user, index) => (
     <div key={index} className="card glass relative w-full ">
       <figure className="w-full">
@@ -19,8 +25,11 @@ const Post = () => {
           </h1>
           <h2>{moment(user.createdAt).fromNow()}</h2>
         </div>
-        <div>
-          <BsThreeDotsVertical className=" text-4xl text-white cursor-pointer" />
+        <div
+          onClick={() => handleClick(user)}
+          className="min-h-12 min-w-12 rounded-full border-2 flex items-center justify-center cursor-pointer"
+        >
+          <BsThreeDotsVertical className=" text-4xl text-white " />
         </div>
       </div>
       <div className=" px-8 py-4">

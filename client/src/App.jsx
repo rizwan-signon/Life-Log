@@ -1,17 +1,6 @@
-import Form from "./components/Form";
-import Header from "./components/Header";
-import Posts from "./components/Posts";
-
+import Home from "./pages/Home";
 const App = () => {
-  return (
-    <div className=" font-sans max-w-7xl mx-auto p-4 text-white">
-      <Header />
-      <div className=" flex items-start gap-4 mt-10">
-        <Posts />
-        <Form />
-      </div>
-    </div>
-  );
+  return <Home />;
 };
 
 export default App;
