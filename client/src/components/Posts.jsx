@@ -8,7 +8,7 @@ const Posts = () => {
   const dispatch = useDispatch();
   // const [posts, setPosts] = useState([]);
   const fetchPosts = async () => {
-    const response = await fetch("http://localhost:3000/posts");
+    const response = await fetch("/api/posts");
     const data = await response.json();
     // setPosts(data);
     dispatch(userDetails(data));

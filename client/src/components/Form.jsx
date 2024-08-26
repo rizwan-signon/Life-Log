@@ -26,7 +26,7 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:3000/posts", {
+      const res = await fetch("/api/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

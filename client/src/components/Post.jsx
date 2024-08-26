@@ -13,7 +13,7 @@ const Post = () => {
   };
   const handleDelete = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:3000/posts/${userId}`, {
+      const res = await fetch(`/api/post/${userId}`, {
         method: "DELETE",
       });
       const data = await res.json();
@@ -25,7 +25,7 @@ const Post = () => {
   //likecount
   const handleLikeCount = async (userId) => {
     try {
-      const res = await fetch(`http://localhost:3000/posts/likes/${userId}`, {
+      const res = await fetch(`/api/likes/${userId}`, {
         method: "PATCH",
       });
       const data = await res.json();
