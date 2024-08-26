@@ -1,12 +1,16 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { showRegisterPage } from "../redux/slices/showModls";
 const Register = () => {
   const { show } = useSelector((state) => state.show);
+  const dispatch = useDispatch();
   const [formData, setFromData] = useState({});
   const handleChange = (e) => {
     setFromData({ ...formData, [e.target.id]: e.target.value });
   };
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const res = await fetch("http://localhost:3000/api/register", {
         method: "POST",
@@ -17,6 +21,7 @@ const Register = () => {
       });
       const data = res.json();
       console.log(data);
+      dispatch(showRegisterPage());
     } catch (error) {
       console.log(error);
     }

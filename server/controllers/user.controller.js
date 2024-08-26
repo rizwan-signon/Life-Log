@@ -8,8 +8,13 @@ export const registerUser = async (req, res, next) => {
       ...rest,
       password: bcrypt.hashSync(password, 10),
     });
+    await newUser.save();
     res.status(200).json(newUser);
   } catch (error) {
     next(error.message);
   }
+};
+
+export const loginUser = async (req, res, next) => {
+  const { email, password } = req.body;
 };
