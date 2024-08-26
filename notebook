@@ -1,0 +1,3 @@
+there are a lot of issue in cors means by using app.use(cors()) you wont recieve the cookie in your browser so set server and proxy inside vite.config which i have just cinfigered in this project
+next thing is dont send password to front end (no need)
+use jwt secret like reverse the words so that you remember like kohat university would be ("tahokytisrevinu")\
