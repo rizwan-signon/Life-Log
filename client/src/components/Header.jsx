@@ -1,12 +1,13 @@
 import logo from "../assets/images/logo.png";
 import { useDispatch } from "react-redux";
-import { showRegisterPage } from "../redux/slices/showModls";
+import { showLoginPage, showRegisterPage } from "../redux/slices/showModls";
 const Header = () => {
   const dispatch = useDispatch();
-  const handleShowModle = () => {
-    setTimeout(() => {
-      dispatch(showRegisterPage());
-    }, 1000);
+  const handleShowRegister = () => {
+    dispatch(showRegisterPage());
+  };
+  const handleShowLogin = () => {
+    dispatch(showLoginPage());
   };
   return (
     <div className="w-full rounded-lg bg-gray-800">
@@ -15,12 +16,15 @@ const Header = () => {
         <img src={logo} alt="logo" className="min-w-12 min-h-12 rounded-full" />
         <div className="flex items-center gap-5">
           <button
-            onClick={handleShowModle}
-            className="p-2 border-2 hover:bg-blue-700 rounded-lg"
+            onClick={handleShowRegister}
+            className="p-2 border hover:bg-blue-700 rounded-lg"
           >
             register
           </button>
-          <button className="p-2 border-2 hover:bg-green-700 rounded-lg">
+          <button
+            onClick={handleShowLogin}
+            className="p-2 border hover:bg-green-700 rounded-lg"
+          >
             login
           </button>
         </div>

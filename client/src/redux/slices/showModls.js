@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   show: false,
+  showLogin: false,
 };
 
 export const showModel = createSlice({
@@ -9,12 +10,17 @@ export const showModel = createSlice({
   initialState,
   reducers: {
     showRegisterPage: (state) => {
-      state.show = !state.show;
+      state.show = true;
+      state.showLogin = false;
+    },
+    showLoginPage: (state) => {
+      state.showLogin = true;
+      state.show = false;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { showRegisterPage } = showModel.actions;
+export const { showRegisterPage, showLoginPage } = showModel.actions;
 
 export default showModel.reducer;
