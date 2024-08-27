@@ -4,6 +4,7 @@ const initialState = {
   user: {},
   show: false,
   userInfo: null,
+  logedInUser: null,
 };
 
 export const userSlice = createSlice({
@@ -19,10 +20,14 @@ export const userSlice = createSlice({
     showForm: (state) => {
       state.show = true;
     },
+    storeLoggedInUser: (state, actions) => {
+      state.logedInUser = actions.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { userDetails, storeId, showForm } = userSlice.actions;
+export const { userDetails, storeId, showForm, storeLoggedInUser } =
+  userSlice.actions;
 
 export default userSlice.reducer;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { showRegisterPage } from "../redux/slices/showModls";
+import { storeLoggedInUser } from "../redux/slices/userSlice";
 const Signin = () => {
   const { showLogin } = useSelector((state) => state.show);
   const dispatch = useDispatch();
@@ -22,8 +23,9 @@ const Signin = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = res.json();
+      const data = await res.json();
       console.log(data);
+      dispatch(storeLoggedInUser(data));
       dispatch(showRegisterPage());
     } catch (error) {
       console.log(error);
