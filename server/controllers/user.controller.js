@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 export const registerUser = async (req, res, next) => {
   const { password, ...rest } = req.body;
+  console.log(rest);
   try {
     if (!password || !rest) throw new Error("all fields required");
     const newUser = await User({

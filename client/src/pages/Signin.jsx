@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { showRegisterPage } from "../redux/slices/showModls";
 import { storeLoggedInUser } from "../redux/slices/userSlice";
+import { useNavigate } from "react-router-dom";
 const Signin = () => {
+  const navigate = useNavigate();
   const { showLogin } = useSelector((state) => state.show);
   const dispatch = useDispatch();
   const [formData, setFromData] = useState({});
   const handleRegister = () => {
-    dispatch(showRegisterPage());
+    navigate("/create");
   };
   const handleChange = (e) => {
     setFromData({ ...formData, [e.target.id]: e.target.value });
